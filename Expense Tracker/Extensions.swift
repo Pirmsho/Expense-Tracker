@@ -21,9 +21,18 @@ extension Color {
 // Date Formatter helper function
 extension DateFormatter {
     static let allNumericUSA: DateFormatter = {
+        print("initializing formatter...")
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         
         return formatter
     }()
+}
+
+extension String {
+    func dateParsed() -> Date {
+        guard let parsedDate = DateFormatter.allNumericUSA.date(from: self) else {return Date() }
+        
+        return parsedDate
+    }
 }
